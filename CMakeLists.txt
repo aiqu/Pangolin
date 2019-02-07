@@ -20,6 +20,11 @@ include(CPack)
 option( BUILD_TESTS "Build Tests" ON )
 option( BUILD_TOOLS "Build Examples" ON )
 option( BUILD_EXAMPLES "Build Tools" ON )
+option( PREFER_STATIC_LIBRARIES "When finding packages, use static libraries if available" OFF )
+
+if(PREFER_STATIC_LIBRARIES AND NOT _WIN_)
+  set(CMAKE_FIND_LIBRARY_SUFFIXES ".a" ".so")
+endif()
 
 set (CMAKE_CXX_STANDARD 14)
 
